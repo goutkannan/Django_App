@@ -5,7 +5,9 @@ I have always been fascinated by flags, this is a small web app that tests your 
 
 
 RESTFul API based game. 
-`Django`
-`SQlite`
-`Rest_Framework`
+
+`Django`<br>
+`SQlite`<br>
+`Rest_Framework`<br>
+
 
