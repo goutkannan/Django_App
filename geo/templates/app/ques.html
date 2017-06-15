@@ -1,0 +1,33 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}.</h2>
+<h3> Your score is {{ score }}</h3>
+
+<p>Use this area to provide additional information.</p>
+<div class="well well-lg">
+
+    <img src="{{ flag }}"  height="162" width="262"/>
+    <br>
+    <br>
+    <p> Select the correct answer </p>
+
+    <form action="/quiz/about/"  method="POST">
+        {%  csrf_token %}
+
+        <ul class="list-group">
+
+        <li class="list-group-item"><label><input type="radio" name="country" value="{{ countryOption.0 }}"> {{ countryOption.0 }}</label></li>
+        <li class="list-group-item"><label><input type="radio" name="country" value="{{ countryOption.1 }}"> {{ countryOption.1 }}</label></li>
+        <li class="list-group-item"><label><input type="radio" name="country" value="{{ countryOption.2 }}"> {{ countryOption.2 }}</label></li>
+        <li class="list-group-item"><label><input type="radio" name="country" value="{{ countryOption.3 }}"> {{ countryOption.3 }}</label></li>
+        </ul>
+
+    <p> <input type="Submit"  value="Submit"> </p>
+    </form>
+</div>
+
+
+<p> {{ country }}</p>
+{% endblock %}
