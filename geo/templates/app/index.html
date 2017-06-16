@@ -9,15 +9,21 @@
 </div>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-8">
         <h2>Getting started</h2>
         <table class="table table-bordered table-hover table-striped tablesorter">
+
             <tbody>
+             <tr>
+                 <th>Country Name</th>
+                 <th>Capital City</th>
+                 <th>Currency</th>
+            </tr>
             {% for data in context %}
             <tr>
                 <td>    {{ data.countryName}}  </td>
                 <td>    {{ data.capitalName }}  </td>
-                <td>    {{ data.correncyname }}  </td>
+                <td>    {{ data.currencyName }}  </td>
             </tr>
             {% endfor %}
             </tbody>
@@ -30,11 +36,7 @@
         <p>The Python Package Index is a repository of software for the Python programming language.</p>
         <p><a class="btn btn-default" href="https://pypi.python.org/pypi">Learn more &raquo;</a></p>
     </div>
-    <div class="col-md-4">
-        <h2>Microsoft Azure</h2>
-        <p>You can easily publish to Microsoft Azure using Python Tools for Visual Studio. Find out how you can host your application using a free trial today.</p>
-        <p><a class="btn btn-default" href="http://azure.microsoft.com">Learn more &raquo;</a></p>
-    </div>
+
 </div>
 
 {% endblock %}

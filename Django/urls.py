@@ -19,4 +19,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^quiz/', include('geo.urls')),
+    url(r'^',include('geo.urls'))
 ]

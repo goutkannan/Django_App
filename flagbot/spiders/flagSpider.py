@@ -1,7 +1,7 @@
 
 
 from scrapy.spiders import BaseSpider
-from flagbot.items import *
+from flagbot.items import CountryBotItem
 
 
 class flagSpider(BaseSpider):
@@ -15,6 +15,8 @@ class flagSpider(BaseSpider):
         td_capital = response.xpath("//td[@class='td-capital']/text() ").extract()
         print(len(td_capital),len(td_flag),len(td_country))
 #        return CountryBotItem(countryName='Italy',capitalName='Rome',currencyName='Euro')
+        c = CountryBotItem()
+
 
         return CountryBotItem(countryName=td_country[0],capitalName=td_capital[0],currencyName='Euro')
 

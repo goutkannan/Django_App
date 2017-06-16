@@ -8,21 +8,22 @@ from datetime import datetime
 from .models import GeoData,FlagData
 from .serializers import GeoSerializer,flagSerializer
 from django.views.decorators.csrf import csrf_exempt
+from .contoller import loadGeoData
+
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 class randques(object):
-    qno = random.sample(range(1,16),15)
+    qno = random.sample(range(1,199),15)
     count =0
     @classmethod
     def get(cls):
-        if cls.count <14:
+        if cls.count <198:
             cls.count += 1
         else:
             cls.count = 0
-        print(".."+str(cls.count))
-        print("..."+str(cls.qno[cls.count]))
+
         return cls.qno[cls.count]
 
 
@@ -37,7 +38,7 @@ def list(request):
 
 @api_view(['GET'])
 def listflag(request):
-    flagData = flagData.objects.all()
+    flagData = FlagData.objects.all()
     serialize = flagSerializer(flagData,many=True)
     return Response(serialize.data)
 
@@ -46,8 +47,13 @@ def index(request):
     return HttpResponse("<h1> Test your geographic knowledge</h1>"
                         "<p> What do you know ?</p>")
 
+
+
+
 def home(request):
     """Renders the home page."""
+    loadGeoData()
+
     context =  GeoData.objects.all()
 
     assert isinstance(request, HttpRequest)
@@ -96,6 +102,7 @@ def about(request):
     indx = randques.get()
     print(indx)
     url = FlagData.objects.get(pk=indx).flagURL
+    print(indx)
     country = FlagData.objects.get(pk=indx).country.countryName
     options = [country]
     optioncount =3
