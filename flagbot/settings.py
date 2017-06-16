@@ -14,24 +14,25 @@ from pathlib import Path
 import django
 
 
-
-from django.core.wsgi import get_wsgi_application
-
 p = Path(__file__)
-DJANGO_PROJECT_PATH = p.parents[2]
+
+#DJANGO_PROJECT_PATH = p.parents[2]
+
+DJANGO_PROJECT_PATH = 'G:\IIT\Django'
 DJANGO_SETTINGS_MODULE= 'Django.settings'
 
 sys.path.insert(0, DJANGO_PROJECT_PATH)
-#sys.path.insert(0,'G:\IIT\Django')
+
 
 os.environ['DJANGO_SETTINGS_MODULE'] = DJANGO_SETTINGS_MODULE
+
 django.setup()
 
 
 BOT_NAME = 'flagbot'
 
 SPIDER_MODULES = ['flagbot.spiders']
-NEWSPIDER_MODULE = 'flagbot.spiders'
+#NEWSPIDER_MODULE = 'flagbot.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent

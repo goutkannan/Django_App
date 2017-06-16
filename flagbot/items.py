@@ -7,15 +7,17 @@
 
 import scrapy
 from scrapy_djangoitem import DjangoItem
-from geo.models import flags,Geo
+from geo.models import FlagData,GeoData
 
 
 class FlagBotItem(DjangoItem):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    django_model = flags
+    django_model = FlagData
+
 
 class CountryBotItem(DjangoItem):
-    django_model = Geo
+    django_model = GeoData
+    testfield = scrapy.Field()
 
 

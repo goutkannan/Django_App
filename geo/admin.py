@@ -1,7 +1,7 @@
 from django.contrib import admin
-from geo.models import Geo,flags
+from geo.models import GeoData,FlagData
 
-admin.site.register(Geo)
-admin.site.register(flags)
+admin.site.register(GeoData)
+admin.site.register(FlagData)
 
 # Register your models here.

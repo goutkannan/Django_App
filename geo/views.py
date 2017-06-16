@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.http import HttpRequest,HttpResponseRedirect
 from django.template import RequestContext
 from datetime import datetime
-from .models import Geo,flags
+from .models import GeoData,FlagData
 from .serializers import GeoSerializer,flagSerializer
 from django.views.decorators.csrf import csrf_exempt
 
@@ -31,13 +31,13 @@ class randques(object):
 # Create your views here.
 @api_view(['GET'])
 def list(request):
-    geoData = Geo.objects.all()
+    geoData = GeoData.objects.all()
     serialize = GeoSerializer(geoData,many=True)
     return Response(serialize.data)
 
 @api_view(['GET'])
 def listflag(request):
-    flagData = flags.objects.all()
+    flagData = flagData.objects.all()
     serialize = flagSerializer(flagData,many=True)
     return Response(serialize.data)
 
@@ -48,7 +48,7 @@ def index(request):
 
 def home(request):
     """Renders the home page."""
-    context =  Geo.objects.all()
+    context =  GeoData.objects.all()
 
     assert isinstance(request, HttpRequest)
     return render(request,'app/index.html',{'context':context} )
@@ -95,12 +95,12 @@ def about(request):
     #indx = random.randint(1, 12)
     indx = randques.get()
     print(indx)
-    url = flags.objects.get(pk=indx).flagURL
-    country = flags.objects.get(pk=indx).country.countryName
+    url = FlagData.objects.get(pk=indx).flagURL
+    country = FlagData.objects.get(pk=indx).country.countryName
     options = [country]
     optioncount =3
     while optioncount!=0:
-        optionCountry = flags.objects.get(pk=random.randint(1,12)).country.countryName
+        optionCountry = FlagData.objects.get(pk=random.randint(1, 12)).country.countryName
 
         if optionCountry not in options:
             options.append(optionCountry)
